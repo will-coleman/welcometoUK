@@ -2,186 +2,317 @@
 <html>
   <body style="background-color:Blue;">
 <body>
-@import url('https://fonts.googleapis.com/css?family=Arima+Madurai:300');
+ <style>
+    html {
+        height: 100%;
+    }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #fff6e3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-h1 {
-	font-family: 'Arima Madurai', cursive;
-	color: black;
-	font-size: 4rem;
-	letter-spacing: -3px;
-	text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
-	position: relative;
-	z-index: 3;
-}
+    .main {
+        position: relative;
+    }
 
-.container {
-	z-index: 1;
-	position: relative;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	// min-height: 100vh;
-	min-height: 35rem;
-	background-image: linear-gradient(to bottom,  rgba(255,168,76,0.6) 0%,rgba(255,123,13,0.6) 100%), url('https://images.unsplash.com/photo-1446824505046-e43605ffb17f');
-	background-blend-mode: soft-light;
-	background-size: cover;
-	background-position: center center;
-	padding: 2rem;
-}
+    .dragon {
+        width: 200px;
+        height: 140px;
+        transform-origin: 50% 80%;
+        animation: zoomIn .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
+    }
 
-.bird {
-	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg);
-	background-size: auto 100%;
-	width: 88px;
-	height: 125px;
-	will-change: background-position;
-	
-	animation-name: fly-cycle;
-	animation-timing-function: steps(10);
-	animation-iteration-count: infinite;
+    .dragon .body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 128px;
+        background: url(./img/body.png) no-repeat center center;
+        background-size: contain;
+        z-index: 10;
+    }
 
-	&--one {
-		animation-duration: 1s;
-		animation-delay: -0.5s;		
-	}
-	
-	&--two {
-		animation-duration: 0.9s;
-		animation-delay: -0.75s;
-	}
-	
-	&--three {
-		animation-duration: 1.25s;
-		animation-delay: -0.25s;
-	}
-	
-	&--four {
-		animation-duration: 1.1s;
-		animation-delay: -0.5s;
-	}
+    .dragon .horn-left {
+        position: absolute;
+        top: -17px;
+        left: 32px;
+        width: 31px;
+        height: 31px;
+        background: url(./img/horn-left.png) no-repeat;
+        background-size: contain;
+        z-index: 9;
+        transform-origin: 150% 200%;
+        transform: rotate(-5deg);
+        animation: swingRight .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
+    }
 
-}
+    .dragon .horn-right {
+        position: absolute;
+        top: -16px;
+        left: 110px;
+        width: 34px;
+        height: 31px;
+        background: url(./img/horn-right.png) no-repeat;
+        background-size: contain;
+        z-index: 9;
+        transform-origin: -50% 200%;
+        transform: rotate(5deg);
+        animation: swingLeft .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
+    }
 
-.bird-container {
-	position: absolute;
-	top: 20%;
-	left: -10%;
-	transform: scale(0) translateX(-10vw);
-	will-change: transform;
-	
-	animation-name: fly-right-one;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	
-	&--one {
-		animation-duration: 15s;
-		animation-delay: 0;
-	}
-	
-	&--two {
-		animation-duration: 16s;
-		animation-delay: 1s;
-	}
-	
-	&--three {
-		animation-duration: 14.6s;
-		animation-delay: 9.5s;
-	}
-	
-	&--four {
-		animation-duration: 16s;
-		animation-delay: 10.25s;
-	}
-	
-}
+    .dragon .eye {
+        position: absolute;
+        top: 39px;
+        width: 11px;
+        height: 11px;
+        background: url(./img/eye.png) no-repeat;
+        background-size: contain;
+        z-index: 12;
+    }
 
-@keyframes fly-cycle {
-	
-	100% {
-		background-position: -900px 0;
-	}
-	
-}
+    .dragon .eye.left {
+        left: 49px;
+    }
 
-@keyframes fly-right-one {
-	
-	0% {
-		transform: scale(0.3) translateX(-10vw);
-	}
-	
-	10% {
-		transform: translateY(2vh) translateX(10vw) scale(0.4);
-	}
-	
-	20% {
-		transform: translateY(0vh) translateX(30vw) scale(0.5);
-	}
-	
-	30% {
-		transform: translateY(4vh) translateX(50vw) scale(0.6);
-	}
-	
-	40% {
-		transform: translateY(2vh) translateX(70vw) scale(0.6);
-	}
-	
-	50% {
-		transform: translateY(0vh) translateX(90vw) scale(0.6);
-	}
-	
-	60% {
-		transform: translateY(0vh) translateX(110vw) scale(0.6);
-	}
-	
-	100% {
-		transform: translateY(0vh) translateX(110vw) scale(0.6);
-	}
-	
-}
+    .dragon .eye.right {
+        left: 118px;
+        transform-origin: 50% 50%;
+        transform: rotate(180deg);
+    }
 
-@keyframes fly-right-two {
-	
-	0% {
-		transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-	}
-	
-	10% {
-		transform: translateY(0vh) translateX(10vw) scale(0.4);
-	}
-	
-	20% {
-		transform: translateY(-4vh) translateX(30vw) scale(0.6);
-	}
-	
-	30% {
-		transform: translateY(1vh) translateX(50vw) scale(0.45);
-	}
-	
-	40% {
-		transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-	}
-	
-	50% {
-		transform: translateY(0vh) translateX(90vw) scale(0.45);
-	}
-	
-	51% {
-		transform: translateY(0vh) translateX(110vw) scale(0.45);
-	}
-	
-	100% {
-		transform: translateY(0vh) translateX(110vw) scale(0.45);
-	}
-	
-}
+    .dragon .blush {
+        position: absolute;
+        top: 46px;
+        width: 15px;
+        height: 9px;
+        background: url(./img/blush.png) no-repeat;
+        background-size: 100% 100%;
+        z-index: 11;
+        animation: blush .5s ease infinite alternate;
+    }
 
+    .dragon .blush.left {
+        left: 43px;
+    }
+
+    .dragon .blush.right {
+        left: 120px;
+    }
+
+    .dragon .mouth {
+        position: absolute;
+        top: 52px;
+        left: 49px;
+        width: 78px;
+        height: 56px;
+        background: url(./img/mouth.png) no-repeat;
+        background-size: 100%;
+        z-index: 11;
+        animation: openMouth 1s ease infinite;
+    }
+
+    .dragon .tail-sting {
+        position: absolute;
+        top: 67px;
+        left: 139px;
+        width: 40px;
+        height: 38px;
+        background: url(./img/tail-sting.png) no-repeat;
+        background-size: contain;
+        z-index: 9;
+        transform-origin: 0 100%;
+        animation: tailUp .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
+    }
+
+    .shadow-wrapper {
+        position: absolute;
+        top: 110px;
+        width: 100%;
+    }
+
+    .shadow {
+        margin: 0 auto;
+        width: 110px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+        z-index: 0;
+        animation: zoomIn .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
+    }
+
+    .fire-wrapper {
+        position: absolute;
+        width: 40px;
+        top: 60px;
+        left: 88px;
+        transform: translate(-50%, -50%);
+        transform-origin: 50% 100%;
+        animation: fireUp 1s ease-in infinite;
+    }
+
+    .fire {
+        padding-bottom: 135%;
+        width: 100%;
+        height: 100%;
+        background: url(./img/fire.png) no-repeat;
+        background-size: contain;
+        animation: fire 1s ease-out infinite;
+    }
+
+    .progress {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .progress .outer {
+        width: 100%;
+        height: 14px;
+        border-radius: 7px;
+        background: rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .progress .inner {
+        width: 0;
+        height: 100%;
+        background: #ffcd33;
+        animation: loading 2s linear infinite;
+    }
+
+    @keyframes zoomIn {
+        100% {
+            transform: scale(1.16, 1.16);
+        }
+    }
+
+    @keyframes swingRight {
+        100% {
+            transform: rotate(5deg);
+        }
+    }
+
+    @keyframes swingLeft {
+        100% {
+            transform: rotate(-5deg);
+        }
+    }
+
+    @keyframes blush {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes openMouth {
+        0% {
+            -webkit-clip-path: ellipse(20% 0% at 50% 0);
+                    clip-path: ellipse(20% 0% at 50% 0);
+        }
+
+        50% {
+            -webkit-clip-path: ellipse(100% 100% at 50% 0);
+                    clip-path: ellipse(100% 100% at 50% 0);
+        }
+
+        70% {
+            -webkit-clip-path: ellipse(100% 100% at 50% 0);
+                    clip-path: ellipse(100% 100% at 50% 0);
+        }
+
+        100% {
+            -webkit-clip-path: ellipse(20% 0% at 50% 0);
+                    clip-path: ellipse(20% 0% at 50% 0);
+        }
+    }
+
+    @keyframes tailUp {
+        0% {
+            transform: scaleY(0.9);
+        }
+
+        100% {
+            transform: scaleY(1.06);
+        }
+    }
+
+    @keyframes loading {
+        100% {
+            width: 100%;
+        }
+    }
+
+    @keyframes fireUp {
+        0% {
+            top: 70px;
+        }
+
+        20% {
+            top: 70px;
+        }
+
+        100% {
+            top: -80px;
+        }
+    }
+
+    @keyframes fire {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0.8;
+        }
+
+        20% {
+            transform: scale(0, 0);
+            opacity: 0.8;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1, 1);
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="shadow-wrapper">
+            <div class="shadow"></div>
+        </div>
+        <div class="dragon">
+            <div class="body"></div>
+            <div class="horn-left"></div>
+            <div class="horn-right"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="blush left"></div>
+            <div class="blush right"></div>
+            <div class="mouth"></div>
+            <div class="tail-sting"></div>
+        </div>
+        <div class="fire-wrapper">
+            <div class="fire"></div>
+        </div>
+        <div class="progress">
+            <div class="outer">
+                <div class="inner"></div>
+            </div>
+        </div>
+    </div>
 <center>
 <p style="font-size:300px" >VISIT THE UK</p>
 <img src="https://steamuserimages-a.akamaihd.net/ugc/950707201106696534/FBF28FABBFFE6779977EC0E46B21E0BDC3F436B7/?imw=512&imh=639&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Flowers in Chania" width="660" height="600">
