@@ -3,316 +3,86 @@
   <body style="background-color:Blue;">
 <body>
  <style>
-    html {
-        height: 100%;
-    }
+    <div class="hero">
 
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        background: #fff6e3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .main {
-        position: relative;
-    }
-
-    .dragon {
-        width: 200px;
-        height: 140px;
-        transform-origin: 50% 80%;
-        animation: zoomIn .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
-    }
-
-    .dragon .body {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 180px;
-        height: 128px;
-        background: url(./img/body.png) no-repeat center center;
-        background-size: contain;
-        z-index: 10;
-    }
-
-    .dragon .horn-left {
-        position: absolute;
-        top: -17px;
-        left: 32px;
-        width: 31px;
-        height: 31px;
-        background: url(./img/horn-left.png) no-repeat;
-        background-size: contain;
-        z-index: 9;
-        transform-origin: 150% 200%;
-        transform: rotate(-5deg);
-        animation: swingRight .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
-    }
-
-    .dragon .horn-right {
-        position: absolute;
-        top: -16px;
-        left: 110px;
-        width: 34px;
-        height: 31px;
-        background: url(./img/horn-right.png) no-repeat;
-        background-size: contain;
-        z-index: 9;
-        transform-origin: -50% 200%;
-        transform: rotate(5deg);
-        animation: swingLeft .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
-    }
-
-    .dragon .eye {
-        position: absolute;
-        top: 39px;
-        width: 11px;
-        height: 11px;
-        background: url(./img/eye.png) no-repeat;
-        background-size: contain;
-        z-index: 12;
-    }
-
-    .dragon .eye.left {
-        left: 49px;
-    }
-
-    .dragon .eye.right {
-        left: 118px;
-        transform-origin: 50% 50%;
-        transform: rotate(180deg);
-    }
-
-    .dragon .blush {
-        position: absolute;
-        top: 46px;
-        width: 15px;
-        height: 9px;
-        background: url(./img/blush.png) no-repeat;
-        background-size: 100% 100%;
-        z-index: 11;
-        animation: blush .5s ease infinite alternate;
-    }
-
-    .dragon .blush.left {
-        left: 43px;
-    }
-
-    .dragon .blush.right {
-        left: 120px;
-    }
-
-    .dragon .mouth {
-        position: absolute;
-        top: 52px;
-        left: 49px;
-        width: 78px;
-        height: 56px;
-        background: url(./img/mouth.png) no-repeat;
-        background-size: 100%;
-        z-index: 11;
-        animation: openMouth 1s ease infinite;
-    }
-
-    .dragon .tail-sting {
-        position: absolute;
-        top: 67px;
-        left: 139px;
-        width: 40px;
-        height: 38px;
-        background: url(./img/tail-sting.png) no-repeat;
-        background-size: contain;
-        z-index: 9;
-        transform-origin: 0 100%;
-        animation: tailUp .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
-    }
-
-    .shadow-wrapper {
-        position: absolute;
-        top: 110px;
-        width: 100%;
-    }
-
-    .shadow {
-        margin: 0 auto;
-        width: 110px;
-        height: 30px;
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 50%;
-        z-index: 0;
-        animation: zoomIn .5s cubic-bezier(0.47, 0, 0.75, 0.72) infinite alternate;
-    }
-
-    .fire-wrapper {
-        position: absolute;
-        width: 40px;
-        top: 60px;
-        left: 88px;
-        transform: translate(-50%, -50%);
-        transform-origin: 50% 100%;
-        animation: fireUp 1s ease-in infinite;
-    }
-
-    .fire {
-        padding-bottom: 135%;
-        width: 100%;
-        height: 100%;
-        background: url(./img/fire.png) no-repeat;
-        background-size: contain;
-        animation: fire 1s ease-out infinite;
-    }
-
-    .progress {
-        margin-top: 30px;
-        width: 100%;
-    }
-
-    .progress .outer {
-        width: 100%;
-        height: 14px;
-        border-radius: 7px;
-        background: rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-    }
-
-    .progress .inner {
-        width: 0;
-        height: 100%;
-        background: #ffcd33;
-        animation: loading 2s linear infinite;
-    }
-
-    @keyframes zoomIn {
-        100% {
-            transform: scale(1.16, 1.16);
-        }
-    }
-
-    @keyframes swingRight {
-        100% {
-            transform: rotate(5deg);
-        }
-    }
-
-    @keyframes swingLeft {
-        100% {
-            transform: rotate(-5deg);
-        }
-    }
-
-    @keyframes blush {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes openMouth {
-        0% {
-            -webkit-clip-path: ellipse(20% 0% at 50% 0);
-                    clip-path: ellipse(20% 0% at 50% 0);
-        }
-
-        50% {
-            -webkit-clip-path: ellipse(100% 100% at 50% 0);
-                    clip-path: ellipse(100% 100% at 50% 0);
-        }
-
-        70% {
-            -webkit-clip-path: ellipse(100% 100% at 50% 0);
-                    clip-path: ellipse(100% 100% at 50% 0);
-        }
-
-        100% {
-            -webkit-clip-path: ellipse(20% 0% at 50% 0);
-                    clip-path: ellipse(20% 0% at 50% 0);
-        }
-    }
-
-    @keyframes tailUp {
-        0% {
-            transform: scaleY(0.9);
-        }
-
-        100% {
-            transform: scaleY(1.06);
-        }
-    }
-
-    @keyframes loading {
-        100% {
-            width: 100%;
-        }
-    }
-
-    @keyframes fireUp {
-        0% {
-            top: 70px;
-        }
-
-        20% {
-            top: 70px;
-        }
-
-        100% {
-            top: -80px;
-        }
-    }
-
-    @keyframes fire {
-        0% {
-            transform: scale(0, 0);
-            opacity: 0.8;
-        }
-
-        20% {
-            transform: scale(0, 0);
-            opacity: 0.8;
-        }
-
-        50% {
-            opacity: 0.8;
-        }
-
-        100% {
-            transform: scale(1, 1);
-            opacity: 0;
-        }
-    }
-    </style>
-</head>
-<body>
-    <div class="main">
-        <div class="shadow-wrapper">
-            <div class="shadow"></div>
-        </div>
-        <div class="dragon">
-            <div class="body"></div>
-            <div class="horn-left"></div>
-            <div class="horn-right"></div>
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="blush left"></div>
-            <div class="blush right"></div>
-            <div class="mouth"></div>
-            <div class="tail-sting"></div>
-        </div>
-        <div class="fire-wrapper">
-            <div class="fire"></div>
-        </div>
-        <div class="progress">
-            <div class="outer">
-                <div class="inner"></div>
-            </div>
-        </div>
+    <div class="snow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
+		    <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
+			   <g id="snow-bottom-layer">
+				  <ellipse cx="6" cy="1009.5" rx="6" ry="5.5"/>
+				  <ellipse cx="138" cy="1110.5" rx="6" ry="5.5"/>
+				  <ellipse cx="398" cy="1055.5" rx="6" ry="5.5"/>
+				  <ellipse cx="719" cy="1284.5" rx="6" ry="5.5"/>
+				  <ellipse cx="760" cy="1155.5" rx="6" ry="5.5"/>
+				  <ellipse cx="635" cy="1459.5" rx="6" ry="5.5"/>
+				  <ellipse cx="478" cy="1335.5" rx="6" ry="5.5"/>
+				  <ellipse cx="322" cy="1414.5" rx="6" ry="5.5"/>
+				  <ellipse cx="247" cy="1234.5" rx="6" ry="5.5"/>
+				  <ellipse cx="154" cy="1425.5" rx="6" ry="5.5"/>
+				  <ellipse cx="731" cy="773.5" rx="6" ry="5.5"/>
+				  <ellipse cx="599" cy="874.5" rx="6" ry="5.5"/>
+				  <ellipse cx="339" cy="819.5" rx="6" ry="5.5"/>
+				  <ellipse cx="239" cy="1004.5" rx="6" ry="5.5"/>
+				  <ellipse cx="113" cy="863.5" rx="6" ry="5.5"/>
+				  <ellipse cx="102" cy="1223.5" rx="6" ry="5.5"/>
+				  <ellipse cx="395" cy="1155.5" rx="6" ry="5.5"/>
+				  <ellipse cx="826" cy="943.5" rx="6" ry="5.5"/>
+				  <ellipse cx="626" cy="1054.5" rx="6" ry="5.5"/>
+				  <ellipse cx="887" cy="1366.5" rx="6" ry="5.5"/>
+				  <ellipse cx="6" cy="241.5" rx="6" ry="5.5"/>
+				  <ellipse cx="138" cy="342.5" rx="6" ry="5.5"/>
+				  <ellipse cx="398" cy="287.5" rx="6" ry="5.5"/>
+				  <ellipse cx="719" cy="516.5" rx="6" ry="5.5"/>
+				  <ellipse cx="760" cy="387.5" rx="6" ry="5.5"/>
+				  <ellipse cx="635" cy="691.5" rx="6" ry="5.5"/>
+				  <ellipse cx="478" cy="567.5" rx="6" ry="5.5"/>
+				  <ellipse cx="322" cy="646.5" rx="6" ry="5.5"/>
+				  <ellipse cx="247" cy="466.5" rx="6" ry="5.5"/>
+				  <ellipse cx="154" cy="657.5" rx="6" ry="5.5"/>
+				  <ellipse cx="731" cy="5.5" rx="6" ry="5.5"/>
+				  <ellipse cx="599" cy="106.5" rx="6" ry="5.5"/>
+				  <ellipse cx="339" cy="51.5" rx="6" ry="5.5"/>
+				  <ellipse cx="239" cy="236.5" rx="6" ry="5.5"/>
+				  <ellipse cx="113" cy="95.5" rx="6" ry="5.5"/>
+				  <ellipse cx="102" cy="455.5" rx="6" ry="5.5"/>
+				  <ellipse cx="395" cy="387.5" rx="6" ry="5.5"/>
+				  <ellipse cx="826" cy="175.5" rx="6" ry="5.5"/>
+				  <ellipse cx="626" cy="286.5" rx="6" ry="5.5"/>
+				  <ellipse cx="887" cy="598.5" rx="6" ry="5.5"/>
+			   </g>
+		    </g>
+		    <g fill="#FFF" fill-opacity=".3" transform="translate(65 63)">
+			   <g id="snow-top-layer">
+				  <circle cx="8" cy="776" r="8"/>
+				  <circle cx="189" cy="925" r="8"/>
+				  <circle cx="548" cy="844" r="8"/>
+				  <circle cx="685" cy="1115" r="8"/>
+				  <circle cx="858" cy="909" r="8"/>
+				  <circle cx="874" cy="1438" r="8" transform="rotate(180 874 1438)"/>
+				  <circle cx="657" cy="1256" r="8" transform="rotate(180 657 1256)"/>
+				  <circle cx="443" cy="1372" r="8" transform="rotate(180 443 1372)"/>
+				  <circle cx="339" cy="1107" r="8" transform="rotate(180 339 1107)"/>
+				  <circle cx="24" cy="1305" r="8" transform="rotate(180 24 1305)"/>
+				  <circle cx="8" cy="8" r="8"/>
+				  <circle cx="189" cy="157" r="8"/>
+				  <circle cx="548" cy="76" r="8"/>
+				  <circle cx="685" cy="347" r="8"/>
+				  <circle cx="858" cy="141" r="8"/>
+				  <circle cx="874" cy="670" r="8" transform="rotate(180 874 670)"/>
+				  <circle cx="657" cy="488" r="8" transform="rotate(180 657 488)"/>
+				  <circle cx="443" cy="604" r="8" transform="rotate(180 443 604)"/>
+				  <circle cx="339" cy="339" r="8" transform="rotate(180 339 339)"/>
+				  <circle cx="24" cy="537" r="8" transform="rotate(180 24 537)"/>
+			   </g>
+		    </g>
+		</svg>
     </div>
+	
+	<div class="hero__content">
+		<h1>SVG Snow</h1>
+	</div>
+
+</div>
 <center>
 <p style="font-size:300px" >VISIT THE UK</p>
 <img src="https://steamuserimages-a.akamaihd.net/ugc/950707201106696534/FBF28FABBFFE6779977EC0E46B21E0BDC3F436B7/?imw=512&imh=639&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="Flowers in Chania" width="660" height="600">
